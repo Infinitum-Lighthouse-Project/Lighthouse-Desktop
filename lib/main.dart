@@ -1,4 +1,7 @@
+library lh.desktop;
+
 import 'package:flutter/material.dart';
+import 'package:lighthouse_desktop/views/views.dart';
 
 void main() {
   runApp(const LighthouseApp());
@@ -11,7 +14,14 @@ class LighthouseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return MaterialApp(
+      initialRoute: '/test',
+      theme: ThemeData(),
+      routes: {
+        '/test': (BuildContext context) {
+          return TestView();
+        },
+      },
+    );
   }
 }
