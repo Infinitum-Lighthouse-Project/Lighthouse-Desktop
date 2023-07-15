@@ -66,7 +66,10 @@ class LHButtonState extends State<LHButton> {
                   borderRadius: BorderRadius.circular(2),
                   color: currentColor,
                 ),
-                child: widget.child,
+                child: Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: widget.child,
+                ),
               ),
             ),
           ),
@@ -89,10 +92,42 @@ class LHIconButton extends LHButton {
           inactiveColor: Colors.transparent,
           hoverColor: const Mauve.s700().withOpacity(0.5),
           pressedColor: const Mauve.s700(),
-          child: Icon(
-            iconData,
-            size: LHDesignSystem.scaleFactor * 20,
-            color: const Mauve.s300(),
+          child: Center(
+            child: Icon(
+              iconData,
+              size: LHDesignSystem.scaleFactor * 20,
+              color: const Mauve.s300(),
+            ),
+          ),
+        );
+}
+
+class LHTextButton extends LHButton {
+  final String text;
+  final double fixedWidth;
+  final double fixedHeight;
+  // final bool autoSizing;
+
+  LHTextButton({
+    required this.text,
+    required super.callback,
+    required this.fixedHeight,
+    required this.fixedWidth,
+    super.key,
+  }) : super(
+          width: LHDesignSystem.scaleFactor * fixedWidth,
+          height: LHDesignSystem.scaleFactor * fixedHeight,
+          inactiveColor: Colors.transparent,
+          hoverColor: const Mauve.s700().withOpacity(0.5),
+          pressedColor: const Mauve.s700(),
+          child: Center(
+            child: Text(
+              text,
+              style: const TextStyle(
+                color: Mauve.s300(),
+                fontSize: 16,
+              ),
+            ),
           ),
         );
 }

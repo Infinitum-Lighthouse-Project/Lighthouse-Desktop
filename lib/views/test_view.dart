@@ -5,8 +5,8 @@ class TestView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewScaffold(
       child: LHIconButton(
-        iconData: Icons.abc,
         callback: () {},
+        iconData: Icons.check,
       ),
     );
   }
