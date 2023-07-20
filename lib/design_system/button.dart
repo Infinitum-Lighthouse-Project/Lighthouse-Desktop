@@ -1,7 +1,7 @@
 part of lh.desktop.ds;
 
 class LHButton extends StatefulWidget {
-  final double width;
+  final double? width;
   final double height;
   final Color inactiveColor;
   final Color hoverColor;
@@ -30,42 +30,43 @@ class LHButtonState extends State<LHButton> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
-        width: widget.width,
-        height: widget.height,
-        child: MouseRegion(
-          onEnter: (_) {
-            setState(() {
-              currentColor = widget.hoverColor;
-            });
-          },
-          onExit: (_) {
-            setState(() {
-              currentColor = widget.inactiveColor;
-            });
-          },
-          child: GestureDetector(
-            onTapDown: (_) {
-              setState(() {
-                currentColor = widget.pressedColor;
-              });
-            },
-            onTapUp: (_) {
-              setState(() {
-                currentColor = widget.hoverColor;
-              });
-              widget.callback();
-            },
-            child: Center(
-              child: AnimatedContainer(
-                width: widget.width,
-                height: widget.height,
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.easeOutQuad,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2),
-                  color: currentColor,
-                ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AnimatedContainer(
+            width: widget.width,
+            height: widget.height,
+/*                 width: widget.width,
+                height: widget.height, */
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.easeOutQuad,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(2),
+              color: currentColor,
+            ),
+            child: MouseRegion(
+              onEnter: (_) {
+                setState(() {
+                  currentColor = widget.hoverColor;
+                });
+              },
+              onExit: (_) {
+                setState(() {
+                  currentColor = widget.inactiveColor;
+                });
+              },
+              child: GestureDetector(
+                onTapDown: (_) {
+                  setState(() {
+                    currentColor = widget.pressedColor;
+                  });
+                },
+                onTapUp: (_) {
+                  setState(() {
+                    currentColor = widget.hoverColor;
+                  });
+                  widget.callback();
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(4),
                   child: widget.child,
@@ -73,11 +74,22 @@ class LHButtonState extends State<LHButton> {
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
+/*     return Center(
+      child: SizedBox(
+/*         width: widget.width,
+        height: widget.height, */
+        child: 
+      ),
+    ); */
   }
 }
+
+/**
+ * 
+ */
 
 class LHIconButton extends LHButton {
   final IconData iconData;
@@ -104,18 +116,20 @@ class LHIconButton extends LHButton {
 
 class LHTextButton extends LHButton {
   final String text;
-  final double fixedWidth;
+  final double? fixedWidth;
   final double fixedHeight;
   // final bool autoSizing;
 
   LHTextButton({
     required this.text,
     required super.callback,
-    required this.fixedHeight,
+    this.fixedHeight = 24,
     required this.fixedWidth,
     super.key,
   }) : super(
-          width: LHDesignSystem.scaleFactor * fixedWidth,
+          width: fixedWidth != null
+              ? (LHDesignSystem.scaleFactor * fixedWidth)
+              : null,
           height: LHDesignSystem.scaleFactor * fixedHeight,
           inactiveColor: Colors.transparent,
           hoverColor: const Mauve.s700().withOpacity(0.5),

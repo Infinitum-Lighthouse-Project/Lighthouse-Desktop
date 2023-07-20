@@ -4,9 +4,10 @@ class TestView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewScaffold(
-      child: LHIconButton(
+      child: LHTextButton(
         callback: () {},
-        iconData: Icons.check,
+        text: 'Icon Check',
+        fixedWidth: null,
       ),
     );
   }
