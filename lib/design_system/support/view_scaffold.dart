@@ -15,7 +15,6 @@ class ViewScaffoldState extends State<ViewScaffold> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Lavender.s1000(),
       child: Center(
         child: widget.child,
       ),
