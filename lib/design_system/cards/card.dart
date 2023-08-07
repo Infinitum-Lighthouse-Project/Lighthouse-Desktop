@@ -3,9 +3,11 @@ part of lh.desktop.ds;
 // This is where a full typographic system implementation starts
 class LHCard extends StatelessWidget {
   final String header;
+  final Widget child;
 
   const LHCard({
     required this.header,
+    required this.child,
     super.key,
   });
   @override
@@ -28,7 +30,7 @@ class LHCard extends StatelessWidget {
                 header,
                 style: LHType.cardHeader_1,
               ),
-              
+              child,
             ],
           ),
         ),
