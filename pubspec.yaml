@@ -30,6 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  lighthouse_core:
+    git:
+      url: https://github.com/Infinitum-Labs/Lighthouse-Core.git
+      ref: 0dffcc1
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -7,6 +7,12 @@ class TestView extends StatelessWidget {
       child: Center(
         child: LHContextInfoCard(
           header: "In Transit",
+          context: Context(
+            location: "44 Bars Street",
+            energy: 0.5,
+            duration: const Duration(minutes: 40),
+            resources: [],
+          ),
         ),
       ),
     );

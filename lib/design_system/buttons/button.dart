@@ -29,52 +29,47 @@ class LHButtonState extends State<LHButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AnimatedContainer(
-            width: widget.width,
-            height: widget.height,
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.easeOutQuad,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
-              color: currentColor,
-            ),
-            child: GestureDetector(
-              onTapDown: (_) {
-                setState(() {
-                  currentColor = widget.pressedColor;
-                });
-              },
-              onTapUp: (_) {
-                setState(() {
-                  currentColor = widget.hoverColor;
-                });
-                widget.callback();
-              },
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                onEnter: (_) {
-                  setState(() {
-                    currentColor = widget.hoverColor;
-                  });
-                },
-                onExit: (_) {
-                  setState(() {
-                    currentColor = widget.inactiveColor;
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(4),
-                  child: widget.child,
-                ),
-              ),
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      AnimatedContainer(
+        width: widget.width,
+        height: widget.height,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOutQuad,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(2),
+          color: currentColor,
+        ),
+        child: GestureDetector(
+          onTapDown: (_) {
+            setState(() {
+              currentColor = widget.pressedColor;
+            });
+          },
+          onTapUp: (_) {
+            setState(() {
+              currentColor = widget.hoverColor;
+            });
+            widget.callback();
+          },
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            onEnter: (_) {
+              setState(() {
+                currentColor = widget.hoverColor;
+              });
+            },
+            onExit: (_) {
+              setState(() {
+                currentColor = widget.inactiveColor;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(4),
+              child: widget.child,
             ),
           ),
-        ],
+        ),
       ),
-    );
+    ]);
   }
 }

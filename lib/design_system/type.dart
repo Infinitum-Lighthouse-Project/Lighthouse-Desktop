@@ -30,5 +30,6 @@ class LHType {
     color: Mauve.s300(),
     fontSize: 16,
     fontWeight: LHFontWeight.regular,
-  );
+    
+ );
 }
