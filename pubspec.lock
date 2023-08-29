@@ -188,8 +188,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0dffcc1"
-      resolved-ref: "0dffcc1f43de3a622e24eb389fb971b6215ff155"
+      ref: cdb47c0
+      resolved-ref: cdb47c09be3c0d3d7bc473e03e12bbbe3adccc5a
       url: "https://github.com/Infinitum-Labs/Lighthouse-Core.git"
     source: git
     version: "1.0.0+1"

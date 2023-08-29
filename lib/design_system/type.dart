@@ -32,4 +32,11 @@ class LHType {
     fontWeight: LHFontWeight.regular,
     height: LHDesignSystem.fontScaleFactor * 1,
   );
+
+  static TextStyle meta_3(Color color) => TextStyle(
+        color: color,
+        fontSize: LHDesignSystem.fontScaleFactor * 12,
+        fontWeight: LHFontWeight.regular,
+        height: LHDesignSystem.fontScaleFactor * 1,
+      );
 }

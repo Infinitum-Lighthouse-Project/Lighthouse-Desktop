@@ -12,9 +12,11 @@ part './buttons/button.dart';
 part './buttons/text_button.dart';
 part './buttons/icon_button.dart';
 part './buttons/icotext_button.dart';
+part './buttons/pill_button.dart';
 
 part './cards/card.dart';
 part './cards/context_info_card.dart';
+part './cards/task_card.dart';
 
 part './support/view_scaffold.dart';
 

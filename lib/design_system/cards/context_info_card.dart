@@ -40,22 +40,3 @@ class LHContextInfoCard extends LHCard {
           ),
         );
 }
-
-/**
- * 
-              LHIcoTextButton(
-                text: '${context.duration.inMinutes}',
-                iconData: Icons.timer,
-                callback: () {},
-              ),
-              LHIcoTextButton(
-                text: 'Resources',
-                iconData: Icons.keyboard_arrow_down,
-                callback: () {},
-              ),
-              LHIcoTextButton(
-                text: context.location,
-                iconData: Icons.location_on,
-                callback: () {},
-              ),
- */
