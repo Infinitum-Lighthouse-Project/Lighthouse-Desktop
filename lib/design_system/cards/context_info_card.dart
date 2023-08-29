@@ -21,13 +21,18 @@ class LHContextInfoCard extends LHCard {
                   callback: () {},
                 ),
                 LHIcoTextButton(
-                  text: '${context.energy}',
-                  iconData: Icons.bolt,
+                  text: '${context.duration.inMinutes}',
+                  iconData: Icons.timer,
                   callback: () {},
                 ),
                 LHIcoTextButton(
-                  text: '${context.energy}',
-                  iconData: Icons.bolt,
+                  text: 'Resources (${context.resources.length})',
+                  iconData: Icons.expand_more,
+                  callback: () {},
+                ),
+                LHIcoTextButton(
+                  text: context.location,
+                  iconData: Icons.location_on,
                   callback: () {},
                 ),
               ],

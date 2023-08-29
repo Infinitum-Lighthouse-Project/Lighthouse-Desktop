@@ -20,4 +20,5 @@ part './support/view_scaffold.dart';
 
 class LHDesignSystem {
   static const double scaleFactor = 1; // 2
+  static const double fontScaleFactor = scaleFactor;
 }

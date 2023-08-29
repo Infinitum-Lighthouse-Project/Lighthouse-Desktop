@@ -20,7 +20,7 @@ class LHCard extends StatelessWidget {
           color: const Mauve.s900(),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

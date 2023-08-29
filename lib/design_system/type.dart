@@ -14,22 +14,22 @@ class LHFontWeight {
 class LHType {
   static const TextStyle panelHeader_1 = TextStyle(
     color: Lavender.s500(),
-    fontSize: 28,
+    fontSize: LHDesignSystem.fontScaleFactor * 28,
     fontWeight: LHFontWeight.extraBold,
   );
 
   static const TextStyle cardHeader_1 = TextStyle(
     color: Mauve.s100(),
-    fontSize: 20,
+    fontSize: LHDesignSystem.fontScaleFactor * 20,
     fontWeight: LHFontWeight.extraBold,
     //backgroundColor: Colors.red,
-    height: 1.1,
+    height: LHDesignSystem.fontScaleFactor * 1.1,
   );
 
   static const TextStyle cardBody_1 = TextStyle(
     color: Mauve.s300(),
-    fontSize: 16,
+    fontSize: LHDesignSystem.fontScaleFactor * 16,
     fontWeight: LHFontWeight.regular,
-    
- );
+    height: LHDesignSystem.fontScaleFactor * 1,
+  );
 }

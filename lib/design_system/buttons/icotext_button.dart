@@ -24,7 +24,7 @@ class LHIcoTextButton extends LHButton {
               children: [
                 Icon(
                   iconData,
-                  size: LHDesignSystem.scaleFactor * 20,
+                  size: LHDesignSystem.scaleFactor * 16,
                   color: const Mauve.s300(),
                 ),
                 const SizedBox(width: 4),
