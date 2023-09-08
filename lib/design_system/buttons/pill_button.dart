@@ -9,7 +9,7 @@ class LHPillButton extends LHButton {
     required this.text,
     required super.callback,
     required this.metaColor,
-    this.fixedHeight = 16,
+    this.fixedHeight = 24,
     super.width,
     super.key,
   }) : super(
@@ -18,12 +18,9 @@ class LHPillButton extends LHButton {
           hoverColor: metaColor.withOpacity(0.3),
           pressedColor: metaColor.withOpacity(0.5),
           child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(2),
-              child: Text(
-                text,
-                style: LHType.meta_3(metaColor),
-              ),
+            child: Text(
+              text,
+              style: LHType.meta_3(metaColor),
             ),
           ),
         );

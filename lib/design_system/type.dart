@@ -20,7 +20,7 @@ class LHType {
 
   static const TextStyle cardHeader_1 = TextStyle(
     color: Mauve.s100(),
-    fontSize: LHDesignSystem.fontScaleFactor * 20,
+    fontSize: LHDesignSystem.fontScaleFactor * 24,
     fontWeight: LHFontWeight.extraBold,
     //backgroundColor: Colors.red,
     height: LHDesignSystem.fontScaleFactor * 1.1,
@@ -30,13 +30,13 @@ class LHType {
     color: Mauve.s300(),
     fontSize: LHDesignSystem.fontScaleFactor * 16,
     fontWeight: LHFontWeight.regular,
-    height: LHDesignSystem.fontScaleFactor * 1,
+    height: LHDesignSystem.fontScaleFactor * 1.2,
   );
 
   static TextStyle meta_3(Color color) => TextStyle(
         color: color,
-        fontSize: LHDesignSystem.fontScaleFactor * 12,
-        fontWeight: LHFontWeight.regular,
+        fontSize: LHDesignSystem.fontScaleFactor * 14,
+        fontWeight: LHFontWeight.bold,
         height: LHDesignSystem.fontScaleFactor * 1,
       );
 }

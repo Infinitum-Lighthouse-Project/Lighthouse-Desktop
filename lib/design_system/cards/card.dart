@@ -3,6 +3,8 @@ part of lh.desktop.ds;
 class LHCard extends StatelessWidget {
   final String header;
   final Widget child;
+  static const _width = LHDesignSystem.scaleFactor * 336;
+  static const _height = LHDesignSystem.scaleFactor * 120;
 
   const LHCard({
     required this.header,
@@ -13,8 +15,8 @@ class LHCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: LHDesignSystem.scaleFactor * 336,
-        height: LHDesignSystem.scaleFactor * 108,
+        width: _width,
+        height: _height,
         decoration: BoxDecoration(
           borderRadius: LHBorderRadius.r5(),
           color: const Mauve.s900(),
@@ -29,9 +31,7 @@ class LHCard extends StatelessWidget {
                 header,
                 style: LHType.cardHeader_1,
               ),
-              Container(
-                child: child,
-              ),
+              Expanded(child: child),
             ],
           ),
         ),
