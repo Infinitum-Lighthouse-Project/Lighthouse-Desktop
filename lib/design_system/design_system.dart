@@ -18,6 +18,11 @@ part './cards/card.dart';
 part './cards/context_info_card.dart';
 part './cards/task_card.dart';
 part './cards/event_card.dart';
+part './cards/timer_card.dart';
+part './cards/time_tracked.dart';
+part './cards/sprint_card.dart';
+part './cards/recommendations_card.dart';
+part './cards/prototype_dashboard_card.dart';
 
 part './support/view_scaffold.dart';
 
