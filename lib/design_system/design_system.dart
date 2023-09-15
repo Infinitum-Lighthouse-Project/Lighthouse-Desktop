@@ -17,6 +17,7 @@ part './buttons/pill_button.dart';
 part './cards/card.dart';
 part './cards/context_info_card.dart';
 part './cards/task_card.dart';
+part './cards/event_card.dart';
 
 part './support/view_scaffold.dart';
 

@@ -34,7 +34,7 @@ dependencies:
   lighthouse_core:
     git:
       url: https://github.com/Infinitum-Labs/Lighthouse-Core.git
-      ref: cdb47c0
+      ref: 1e04c98
 
 
   # The following adds the Cupertino Icons font to your application.
