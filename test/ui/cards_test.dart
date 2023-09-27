@@ -1,6 +1,6 @@
-part of lh.desktop.views;
+part of lh.desktop.tests;
 
-class TestView extends StatelessWidget {
+class CardsTestView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Task task = Task(
