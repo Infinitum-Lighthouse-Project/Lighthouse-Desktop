@@ -16,6 +16,7 @@ class LHType {
     color: Lavender.s500(),
     fontSize: LHDesignSystem.fontScaleFactor * 28,
     fontWeight: LHFontWeight.extraBold,
+    height: LHDesignSystem.fontScaleFactor * 1.2,
   );
 
   static const TextStyle cardHeader_1 = TextStyle(

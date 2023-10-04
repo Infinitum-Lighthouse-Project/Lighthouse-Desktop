@@ -24,7 +24,13 @@ part './cards/sprint_card.dart';
 part './cards/recommendations_card.dart';
 part './cards/prototype_dashboard_card.dart';
 
+part './containers/container.dart';
+part './containers/vertical_shelf.dart';
+part './containers/horizontal_shelf.dart';
+
 part './support/view_scaffold.dart';
+
+part './utils/utils.dart';
 
 class LHDesignSystem {
   static const double scaleFactor = 1; // 2

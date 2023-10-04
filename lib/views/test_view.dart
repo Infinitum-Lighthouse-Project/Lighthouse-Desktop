@@ -21,56 +21,25 @@ class TestView extends StatelessWidget {
 
     return ViewScaffold(
       child: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 40),
-              LHTaskCard(task: task),
-              const SizedBox(height: 40),
-              LHContextInfoCard(
-                header: 'In Transit',
-                context: Context(
-                  location: '44 Bars Street',
-                  energy: 0.8,
-                  duration: const Duration(minutes: 20),
-                  resources: [],
-                ),
-              ),
-              const SizedBox(height: 40),
-              LHEventCard(
-                event: Event(
-                  description: "This is a description of the event",
-                  task: task.objectId,
-                  start: DateTimeRep(DateTime.now()),
-                  duration: const DurationRep(Duration(minutes: 20)),
-                  userKey: 'userKey',
-                  title: 'Event Title',
-                ),
-              ),
-              const SizedBox(height: 40),
-              LHSprintCard(
-                sprint: Sprint(
-                  tasks: [task.objectId],
-                  status: SprintStatus.inbox,
-                  start:
-                      DateTimeRep(DateTime.now().add(const Duration(days: 2))),
-                  end:
-                      DateTimeRep(DateTime.now().add(const Duration(days: 10))),
-                  userKey: 'userKey',
-                  title: 'Sprint Title',
-                ),
-              ),
-              const SizedBox(height: 40),
-              LHRecommendationsCard(),
-              const SizedBox(height: 40),
-              LHTimeTrackedCard(),
-              const SizedBox(height: 40),
-              LHTimerCard(),
-              const SizedBox(height: 40),
-              LHPrototypeDashboardCard(),
-              const SizedBox(height: 100),
-            ],
-          ),
+        child: Container(
+          width: 1200,
+          height: 800,
+          child: Row(children: [
+            LHVerticalShelf(
+              header: 'Shelf Title',
+              width: 352,
+              height: 592,
+              children:
+                  List<LHTaskCard>.generate(10, (_) => LHTaskCard(task: task)),
+            ),
+            LHHorizontalShelf(
+              header: 'Shelf Title',
+              width: 800,
+              height: 352,
+              children:
+                  List<LHTaskCard>.generate(10, (_) => LHTaskCard(task: task)),
+            ),
+          ]),
         ),
       ),
     );
