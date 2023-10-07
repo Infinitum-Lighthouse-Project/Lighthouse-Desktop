@@ -35,7 +35,7 @@ class TestView extends StatelessWidget {
             LHHorizontalShelf(
               header: 'Shelf Title',
               width: 800,
-              height: 352,
+              height: 176, // 120 + 8 + 8 + 40
               children:
                   List<LHTaskCard>.generate(10, (_) => LHTaskCard(task: task)),
             ),

@@ -28,37 +28,44 @@ class LHContainer extends StatelessWidget {
             width: 2,
           ),
         ),
-        child: Column(
+        child: Stack(
           children: [
-            Container(
-              width: width,
-              height: 40,
-              clipBehavior: Clip.none,
-              decoration: const BoxDecoration(
-                color: Lavender.s900(),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black,
-                    offset: Offset(0, 20),
-                    blurRadius: 20,
-                    spreadRadius: 2,
-                  )
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text(
-                  header,
-                  style: LHType.panelHeader_1,
-                ),
+            Positioned(
+              top: 40,
+              left: 0,
+              height: height - 44,
+              child: SizedBox(
+                height: height - 44,
+                width: width,
+                child: child,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
+            Positioned(
+              top: 0,
+              left: 0,
+              width: width,
+              height: 40,
               child: Container(
-                height: height - 44,
-                child: SingleChildScrollView(
-                  child: child,
+                width: width,
+                height: 40,
+                clipBehavior: Clip.none,
+                decoration: BoxDecoration(
+                  color: const Lavender.s900(),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.4),
+                      offset: const Offset(0, 5),
+                      blurRadius: 10,
+                      spreadRadius: 5,
+                    )
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(
+                    header,
+                    style: LHType.panelHeader_1,
+                  ),
                 ),
               ),
             ),

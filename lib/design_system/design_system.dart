@@ -1,6 +1,8 @@
 library lh.desktop.ds;
 
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:lighthouse_core/db/db.dart';
 import 'package:lighthouse_core/engines/context_engine/context_engine.dart';
 
@@ -29,6 +31,7 @@ part './containers/vertical_shelf.dart';
 part './containers/horizontal_shelf.dart';
 
 part './support/view_scaffold.dart';
+part './support/inner_shadow.dart';
 
 part './utils/utils.dart';
 

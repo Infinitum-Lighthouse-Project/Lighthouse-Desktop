@@ -13,27 +13,25 @@ class LHCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: _width,
-        height: _height,
-        decoration: BoxDecoration(
-          borderRadius: LHBorderRadius.r5(),
-          color: const Mauve.s900(),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                header,
-                style: LHType.cardHeader_1,
-              ),
-              Expanded(child: child),
-            ],
-          ),
+    return Container(
+      width: _width,
+      height: _height,
+      decoration: BoxDecoration(
+        borderRadius: LHBorderRadius.r5(),
+        color: const Mauve.s900(),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              header,
+              style: LHType.cardHeader_1,
+            ),
+            Expanded(child: child),
+          ],
         ),
       ),
     );
