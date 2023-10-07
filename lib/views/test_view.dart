@@ -29,13 +29,20 @@ class TestView extends StatelessWidget {
               header: 'Shelf Title',
               width: 352,
               height: 592,
+              panelButtons: [
+                LHIconButton(iconData: Icons.arrow_downward, callback: () {}),
+              ],
               children:
                   List<LHTaskCard>.generate(10, (_) => LHTaskCard(task: task)),
             ),
+            const SizedBox(width: 40),
             LHHorizontalShelf(
               header: 'Shelf Title',
               width: 800,
               height: 176, // 120 + 8 + 8 + 40
+              panelButtons: [
+                LHIconButton(iconData: Icons.add, callback: () {}),
+              ],
               children:
                   List<LHTaskCard>.generate(10, (_) => LHTaskCard(task: task)),
             ),

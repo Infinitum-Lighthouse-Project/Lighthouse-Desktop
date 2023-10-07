@@ -5,11 +5,13 @@ class LHContainer extends StatelessWidget {
   final Widget child;
   final double width;
   final double height;
+  final List<LHIconButton> panelButtons;
 
   const LHContainer({
     required this.header,
     required this.child,
     required this.height,
+    this.panelButtons = const [],
     this.width = 344, // cardWidth + 8
     super.key,
   });
@@ -30,6 +32,7 @@ class LHContainer extends StatelessWidget {
         ),
         child: Stack(
           children: [
+            // Actual children
             Positioned(
               top: 40,
               left: 0,
@@ -40,6 +43,7 @@ class LHContainer extends StatelessWidget {
                 child: child,
               ),
             ),
+            // Panel
             Positioned(
               top: 0,
               left: 0,
@@ -60,12 +64,19 @@ class LHContainer extends StatelessWidget {
                     )
                   ],
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(
-                    header,
-                    style: LHType.panelHeader_1,
-                  ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        header,
+                        style: LHType.panelHeader_1,
+                      ),
+                    ),
+                    const Spacer(),
+                    ...panelButtons,
+                    const SizedBox(width: 8),
+                  ],
                 ),
               ),
             ),

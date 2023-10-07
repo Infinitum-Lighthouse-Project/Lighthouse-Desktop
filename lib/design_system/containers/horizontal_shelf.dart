@@ -10,6 +10,7 @@ class LHHorizontalShelf extends LHContainer {
     required super.height,
     this.itemSpacing = 8,
     required this.children,
+    super.panelButtons,
     super.key,
   }) : super(
           child: Padding(
