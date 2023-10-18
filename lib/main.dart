@@ -29,6 +29,7 @@ class LighthouseApp extends StatelessWidget {
         '/sprint_end_ready': (_) => const SprintEndReady(),
         '/sprint_end_unready': (_) => const SprintEndUnready(),
         '/all_day_generic': (_) => const AllDayGeneric(),
+        '/all_day_triage': (_) => const AllDayTriage(),
         '/test': (_) => TestView(),
       },
     );

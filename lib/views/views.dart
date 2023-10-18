@@ -9,6 +9,7 @@ part './launch_night.dart';
 part './sprint_end_ready.dart';
 part './sprint_end_unready.dart';
 part './all_day_generic.dart';
+part './all_day_triage.dart';
 
 final Sprint sprint = Sprint(
   tasks: [],
