@@ -26,6 +26,7 @@ class LighthouseApp extends StatelessWidget {
       ),
       routes: {
         '/launch_night': (_) => const LaunchStateNight(),
+        '/sprint_end_ready': (_) => const SprintEndReady(),
         '/test': (_) => TestView(),
       },
     );
