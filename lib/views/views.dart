@@ -7,6 +7,7 @@ import 'package:lighthouse_desktop/design_system/design_system.dart';
 part './test_view.dart';
 part './launch_night.dart';
 part './sprint_end_ready.dart';
+part './sprint_end_unready.dart';
 
 final Sprint sprint = Sprint(
   tasks: [],
