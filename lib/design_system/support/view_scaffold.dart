@@ -15,8 +15,11 @@ class ViewScaffoldState extends State<ViewScaffold> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Center(
-        child: widget.child,
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Center(
+          child: widget.child,
+        ),
       ),
     );
   }

@@ -29,6 +29,7 @@ part './cards/prototype_dashboard_card.dart';
 part './containers/container.dart';
 part './containers/vertical_shelf.dart';
 part './containers/horizontal_shelf.dart';
+part './containers/calendar_view.dart';
 
 part './support/view_scaffold.dart';
 part './support/inner_shadow.dart';
