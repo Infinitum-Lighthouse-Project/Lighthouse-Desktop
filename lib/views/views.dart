@@ -10,6 +10,9 @@ part './sprint_end_ready.dart';
 part './sprint_end_unready.dart';
 part './all_day_generic.dart';
 part './all_day_triage.dart';
+part './sprint_planner_1.dart';
+part './sprint_planner_2.dart';
+part './project_viewer.dart';
 
 final Sprint sprint = Sprint(
   tasks: [],
@@ -18,6 +21,13 @@ final Sprint sprint = Sprint(
   end: DateTimeRep(DateTime.now().add(const Duration(days: 2))),
   userKey: 'userKey',
   title: 'Sprint Title',
+);
+
+final Epic epic = Epic(
+  tasks: [task.objectId],
+  project: 'project',
+  userKey: 'userKey',
+  title: 'Epic Title',
 );
 
 final Task task = Task(
