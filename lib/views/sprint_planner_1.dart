@@ -13,24 +13,24 @@ class SprintPlanner1 extends StatelessWidget {
           header: 'Triaged',
           width: 352,
           height: 768,
-          children: List<LHSprintCard>.generate(
-              10, (index) => LHSprintCard(sprint: sprint)),
+          data: List<Sprint>.generate(10, (_) => sprint),
+          generator: (sprint) => LHSprintCard(sprint: sprint),
         ),
         const SizedBox(width: 32),
         LHVerticalShelf(
           header: 'Sprint S3',
           width: 352,
           height: 768,
-          children: List<LHSprintCard>.generate(
-              10, (index) => LHSprintCard(sprint: sprint)),
+          data: List<Sprint>.generate(10, (_) => sprint),
+          generator: (sprint) => LHSprintCard(sprint: sprint),
         ),
         const SizedBox(width: 32),
         LHVerticalShelf(
           header: 'Sprint S4',
           width: 352,
           height: 768,
-          children: List<LHSprintCard>.generate(
-              10, (index) => LHSprintCard(sprint: sprint)),
+          data: List<Sprint>.generate(10, (_) => sprint),
+          generator: (sprint) => LHSprintCard(sprint: sprint),
         ),
       ],
     ));

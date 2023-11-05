@@ -13,8 +13,8 @@ class AllDayTriage extends StatelessWidget {
             header: 'Scheduled',
             width: 352,
             height: 768,
-            children: List<LHTaskCard>.generate(
-                10, (index) => LHTaskCard(task: task)),
+            data: List<Task>.generate(10, (_) => task),
+            generator: (task) => LHTaskCard(task: task),
           ),
           const SizedBox(width: 32),
           Column(

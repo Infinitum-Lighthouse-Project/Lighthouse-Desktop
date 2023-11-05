@@ -13,8 +13,8 @@ class ProjectViewer extends StatelessWidget {
           header: 'Epics',
           width: 352,
           height: 768,
-          children: List<LHEpicCard>.generate(
-              10, (index) => LHEpicCard(epic: epic)),
+          data: List<Epic>.generate(10, (_) => epic),
+          generator: (epic) => LHEpicCard(epic: epic),
         ),
         const SizedBox(width: 32),
         LHCalendarView(

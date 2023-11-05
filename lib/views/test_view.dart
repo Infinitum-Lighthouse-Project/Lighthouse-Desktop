@@ -19,35 +19,75 @@ class TestView extends StatelessWidget {
       title: 'Card Title',
     );
 
+    /// https://stackoverflow.com/questions/69410762/flutter-visitchildelements-called-during-build
     return ViewScaffold(
-      child: Center(
-        child: Container(
-          width: 1200,
+      child: HotboxArea<Task>(
+        hotbox: (data) => LighthouseHotbox<Task>(
+          hotboxData: HotboxData(
+            indexableContent: data,
+            rightSectorItems: [],
+            lowerSectorItems: [],
+            leftSectorItems: [],
+          ),
+          width: 800,
           height: 800,
-          child: Row(children: [
-            LHVerticalShelf(
-              header: 'Shelf Title',
-              width: 352,
-              height: 592,
-              panelButtons: [
-                LHIconButton(iconData: Icons.arrow_downward, callback: () {}),
-              ],
-              children:
-                  List<LHTaskCard>.generate(10, (_) => LHTaskCard(task: task)),
-            ),
-            const SizedBox(width: 40),
-            LHHorizontalShelf(
-              header: 'Shelf Title',
-              width: 800,
-              height: 176, // 120 + 8 + 8 + 40
-              panelButtons: [
-                LHIconButton(iconData: Icons.add, callback: () {}),
-              ],
-              children:
-                  List<LHTaskCard>.generate(10, (_) => LHTaskCard(task: task)),
-            ),
-          ]),
+          style: const HotboxStyle(backgroundColor: Colors.deepPurpleAccent),
         ),
+        child: Center(
+          child: Container(
+            width: 1200,
+            height: 800,
+            child: Row(children: [
+              LHVerticalShelf(
+                header: 'Shelf Title',
+                width: 352,
+                height: 592,
+                panelButtons: [
+                  LHIconButton(iconData: Icons.arrow_downward, callback: () {}),
+                ],
+                data: List<Task>.generate(10, (_) => task),
+                generator: (task) => LHTaskCard(task: task),
+              ),
+              const SizedBox(width: 40),
+              LHHorizontalShelf(
+                header: 'Shelf Title',
+                width: 800,
+                height: 176, // 120 + 8 + 8 + 40
+                panelButtons: [
+                  LHIconButton(iconData: Icons.add, callback: () {}),
+                ],
+                children: List<LHTaskCard>.generate(
+                    10, (_) => LHTaskCard(task: task)),
+              ),
+            ]),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LighthouseHotbox<T> extends Hotbox<T> {
+  const LighthouseHotbox({
+    required super.hotboxData,
+    required super.width,
+    required super.height,
+    required super.style,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: width,
+        height: height,
+        color: style.backgroundColor,
+        child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Center(
+              child: Text(hotboxData.indexableContent.length.toString()),
+            )),
       ),
     );
   }

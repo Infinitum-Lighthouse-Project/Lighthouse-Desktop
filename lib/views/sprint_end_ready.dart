@@ -13,8 +13,8 @@ class SprintEndReady extends StatelessWidget {
             header: 'Sprint S4',
             width: 352,
             height: 768,
-            children: List<LHSprintCard>.generate(
-                10, (index) => LHSprintCard(sprint: sprint)),
+            data: List<Task>.generate(10, (_) => task),
+            generator: (task) => LHTaskCard(task: task),
           ),
           const SizedBox(width: 32),
           LHCalendarView(

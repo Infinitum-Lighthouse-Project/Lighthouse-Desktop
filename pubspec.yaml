@@ -35,6 +35,11 @@ dependencies:
     git:
       url: https://github.com/Infinitum-Labs/Lighthouse-Core.git
       ref: 1e04c98
+  
+  hotbox:
+    git:
+      url: https://github.com/ObsidianXVI/Flutter-Hotbox.git
+      ref: 5cb643b
 
 
   # The following adds the Cupertino Icons font to your application.
