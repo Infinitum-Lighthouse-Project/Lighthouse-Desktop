@@ -26,7 +26,7 @@ class LHSprintCard extends LHCard {
                     ),
                     LHIcoTextButton(
                       text:
-                          "${sprint.end.dateTime.difference(DateTime.now()).inDays} days left",
+                          "${sprint.end.difference(DateTime.now()).inDays} days left",
                       iconData: Icons.timer,
                       callback: () {},
                     ),

@@ -7,9 +7,9 @@ class TestView extends StatelessWidget {
       description: 'description',
       dependencies: [],
       status: TaskStatus.inbox,
-      due: DateTimeRep(DateTime.now().add(Duration(days: 2))),
-      assigned: DateTimeRep(DateTime.now().add(Duration(hours: 2))),
-      duration: DurationRep(Duration(minutes: 50)),
+      due: DateTime.now().add(Duration(days: 2)),
+      assigned: DateTime.now().add(Duration(hours: 2)),
+      duration: Duration(minutes: 50),
       load: 0,
       contexts: [],
       epic: 'epic',
@@ -25,13 +25,16 @@ class TestView extends StatelessWidget {
         hotbox: (data) => LighthouseHotbox<Task>(
           hotboxData: HotboxData(
             indexableContent: data,
-            rightSectorItems: [],
-            lowerSectorItems: [],
-            leftSectorItems: [],
+            rightSector: Container(),
+            lowerSector: Container(),
+            leftSector: Container(),
           ),
           width: 800,
           height: 800,
-          style: const HotboxStyle(backgroundColor: Colors.deepPurpleAccent),
+          style: const HotboxStyle(
+            backgroundColor: Colors.deepPurpleAccent,
+            pieColor: Colors.amber,
+          ),
         ),
         child: Center(
           child: Container(

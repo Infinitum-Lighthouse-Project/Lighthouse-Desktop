@@ -1,5 +1,6 @@
 library lh.desktop.views;
 
+import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:hotbox/hotbox.dart';
 import 'package:lighthouse_core/db/db.dart';
@@ -18,8 +19,8 @@ part './project_viewer.dart';
 final Sprint sprint = Sprint(
   tasks: [],
   status: SprintStatus.inbox,
-  start: DateTimeRep(DateTime.now().subtract(const Duration(days: 4))),
-  end: DateTimeRep(DateTime.now().add(const Duration(days: 2))),
+  start: DateTime.now().subtract(const Duration(days: 4)),
+  end: DateTime.now().add(const Duration(days: 2)),
   userKey: 'userKey',
   title: 'Sprint Title',
 );
@@ -35,9 +36,9 @@ final Task task = Task(
   description: 'description',
   dependencies: [],
   status: TaskStatus.inbox,
-  due: DateTimeRep(DateTime.now().add(const Duration(days: 2))),
-  assigned: DateTimeRep(DateTime.now().add(const Duration(days: 1))),
-  duration: const DurationRep(Duration(minutes: 10)),
+  due: DateTime.now().add(const Duration(days: 2)),
+  assigned: DateTime.now().add(const Duration(days: 1)),
+  duration: const Duration(minutes: 10),
   load: 0.4,
   contexts: [],
   epic: 'epic',

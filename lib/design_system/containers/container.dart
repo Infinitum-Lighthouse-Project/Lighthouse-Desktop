@@ -74,7 +74,12 @@ class LHContainer extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    ...panelButtons,
+                    ...[
+                      for (final pb in panelButtons) ...[
+                        const SizedBox(width: 4),
+                        pb
+                      ]
+                    ],
                     const SizedBox(width: 8),
                   ],
                 ),

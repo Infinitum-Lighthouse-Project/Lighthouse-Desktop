@@ -25,17 +25,17 @@ class LHTaskCard extends LHCard {
                   direction: Axis.horizontal,
                   children: [
                     LHIcoTextButton(
-                      text: task.assigned.dateTime.toString(),
+                      text: task.assigned.toString(),
                       iconData: Icons.schedule,
                       callback: () {},
                     ),
                     LHIcoTextButton(
-                      text: task.due.dateTime.toString(),
+                      text: task.due.toString(),
                       iconData: Icons.alarm,
                       callback: () {},
                     ),
                     LHIcoTextButton(
-                      text: task.duration.duration.inMinutes.toString(),
+                      text: task.duration.inMinutes.toString(),
                       iconData: Icons.timer,
                       callback: () {},
                     ),

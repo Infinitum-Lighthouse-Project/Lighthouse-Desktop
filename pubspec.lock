@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  bootstrap_icons:
+    dependency: "direct main"
+    description:
+      name: bootstrap_icons
+      sha256: "7b073ae60f9dd48c2919994744132b8a576cf7243483a6698644f94b0c47bd7d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.11.1"
   characters:
     dependency: transitive
     description:
@@ -163,11 +171,9 @@ packages:
   hotbox:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "5cb643b"
-      resolved-ref: "5cb643b3e00a996f35fb924446cdd5b984ba1f72"
-      url: "https://github.com/ObsidianXVI/Flutter-Hotbox.git"
-    source: git
+      path: "../Hotbox"
+      relative: true
+    source: path
     version: "0.0.1"
   http:
     dependency: transitive
@@ -196,11 +202,9 @@ packages:
   lighthouse_core:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "1e04c98"
-      resolved-ref: "1e04c98d86a85b9c4a60a4169cb3440bcdc29781"
-      url: "https://github.com/Infinitum-Labs/Lighthouse-Core.git"
-    source: git
+      path: "/Users/OBSiDIAN/Downloads/Shelves/VSCode/Repositories/Lighthouse Core/lighthouse_core"
+      relative: false
+    source: path
     version: "1.0.0+1"
   lints:
     dependency: transitive

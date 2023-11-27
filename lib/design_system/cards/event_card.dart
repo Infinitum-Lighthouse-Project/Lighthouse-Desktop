@@ -25,7 +25,7 @@ class LHEventCard extends LHCard {
                   direction: Axis.horizontal,
                   children: [
                     LHIcoTextButton(
-                      text: event.start.dateTime.toString(),
+                      text: event.start.toString(),
                       iconData: Icons.event,
                       callback: () {},
                     ),
