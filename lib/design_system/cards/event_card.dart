@@ -13,7 +13,7 @@ class LHEventCard extends LHCard {
     required this.event,
     super.key,
   }) : super(
-          header: event.title,
+          header: event.title.get(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -29,12 +29,14 @@ class LHEventCard extends LHCard {
                       iconData: Icons.event,
                       callback: () {},
                     ),
-                    if (event.repeatRule != null)
+                    // fix the following code after the repeatRule property is
+                    // properly defined
+                    /* if (event.repeatRule.)
                       LHIcoTextButton(
-                        text: event.repeatRule!.count.toString(),
+                        text: event.repeatRule.get().toString(),
                         iconData: Icons.alarm,
                         callback: () {},
-                      ),
+                      ), */
                   ],
                 ),
               ),

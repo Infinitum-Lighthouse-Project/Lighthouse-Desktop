@@ -7,7 +7,7 @@ class LHSprintCard extends LHCard {
     required this.sprint,
     super.key,
   }) : super(
-          header: sprint.title,
+          header: sprint.title.get(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -20,16 +20,17 @@ class LHSprintCard extends LHCard {
                   children: [
                     LHIcoTextButton(
                       // Need to fetch the respective [Task]s from the DB
-                      text: sprint.tasks.length.toString(),
+                      text: sprint.tasks.get().length.toString(),
                       iconData: Icons.clear_all,
                       callback: () {},
                     ),
-                    LHIcoTextButton(
-                      text:
-                          "${sprint.end.difference(DateTime.now()).inDays} days left",
-                      iconData: Icons.timer,
-                      callback: () {},
-                    ),
+                    if (sprint.end.get() != null)
+                      LHIcoTextButton(
+                        text:
+                            "${sprint.end.get()!.difference(DateTime.now()).inDays} days left",
+                        iconData: Icons.timer,
+                        callback: () {},
+                      ),
                     LHIcoTextButton(
                       text: "None",
                       iconData: Icons.balance,
@@ -46,7 +47,7 @@ class LHSprintCard extends LHCard {
                 direction: Axis.horizontal,
                 children: [
                   LHPillButton(
-                    text: sprint.status.name,
+                    text: sprint.status.get().name,
                     metaColor: const Meta.lushGreen(),
                     callback: () {},
                   ),

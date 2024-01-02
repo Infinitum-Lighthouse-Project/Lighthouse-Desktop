@@ -13,7 +13,7 @@ class LHTaskCard extends LHCard {
     required this.task,
     super.key,
   }) : super(
-          header: task.title,
+          header: task.title.get(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,11 +34,12 @@ class LHTaskCard extends LHCard {
                       iconData: Icons.alarm,
                       callback: () {},
                     ),
-                    LHIcoTextButton(
-                      text: task.duration.inMinutes.toString(),
-                      iconData: Icons.timer,
-                      callback: () {},
-                    ),
+                    if (task.duration.get() != null)
+                      LHIcoTextButton(
+                        text: task.duration.get()!.inMinutes.toString(),
+                        iconData: Icons.timer,
+                        callback: () {},
+                      ),
                   ],
                 ),
               ),
@@ -50,15 +51,16 @@ class LHTaskCard extends LHCard {
                 direction: Axis.horizontal,
                 children: [
                   LHPillButton(
-                    text: task.status.name,
+                    text: task.status.get().name,
                     metaColor: const Meta.hotPink(),
                     callback: () {},
                   ),
-                  LHPillButton(
-                    text: task.project,
-                    metaColor: const Meta.midnightBlue(),
-                    callback: () {},
-                  ),
+                  if (task.project.get() != null)
+                    LHPillButton(
+                      text: task.project.get()!,
+                      metaColor: const Meta.midnightBlue(),
+                      callback: () {},
+                    ),
                   // ...List<LHPillButton>.generate(task., (index) => null)
                 ],
               ),

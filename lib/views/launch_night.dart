@@ -22,24 +22,23 @@ class LaunchStateNight extends StatelessWidget with DataBinding {
               panelButtons: [
                 LHIconButton(
                   iconData: BootstrapIcons.plus_lg,
-                  callback: () {
-                    DB.tasksColl.add(
-                      Task(
-                        description: "Some description",
-                        dependencies: [],
-                        status: TaskStatus.inbox,
-                        due: DateTime.now().add(const Duration(days: 3)),
-                        assigned: DateTime.now().add(const Duration(days: 3)),
-                        duration: const Duration(seconds: 2),
-                        load: 0.3,
-                        contexts: [],
-                        epic: 'epic',
-                        sprint: 'sprint',
-                        project: 'project',
-                        userKey: 'userKey',
-                        title: 'Vamooos',
-                      ),
+                  callback: () async {
+                    final Task newTask =
+                        Task(userKey: 'userKey', objectTitle: 'Untitled');
+                    await showDialog(
+                      context: context,
+                      builder: (context) =>
+                          FormDialog<Task>(schemaObject: newTask),
                     );
+                    /* DB.tasksColl.add(
+                      Task(userKey: 'userKey', objectTitle: 'Vamos')
+                        ..description.set("Some description")
+                        ..due.set(DateTime.now().add(const Duration(days: 3)))
+                        ..assigned
+                            .set(DateTime.now().add(const Duration(days: 3)))
+                        ..load.set(0.2)
+                        ..duration.set(const Duration(seconds: 2)),
+                    ); */
                   },
                 ),
                 LHIconButton(

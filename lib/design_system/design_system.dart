@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:hotbox/hotbox.dart';
 import 'package:lighthouse_core/db/db.dart';
 import 'package:lighthouse_core/engines/context_engine/context_engine.dart';
+import 'package:lighthouse_core/utils/utils.dart';
 
 part './color.dart';
 part './type.dart';
@@ -33,6 +34,10 @@ part './containers/container.dart';
 part './containers/vertical_shelf.dart';
 part './containers/horizontal_shelf.dart';
 part './containers/calendar_view.dart';
+
+part './input/form_dialog.dart';
+part './input/text_field.dart';
+part './input/dropdown.dart';
 
 part './support/view_scaffold.dart';
 part './support/inner_shadow.dart';

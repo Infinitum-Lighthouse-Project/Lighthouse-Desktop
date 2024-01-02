@@ -3,22 +3,6 @@ part of lh.desktop.views;
 class TestView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Task task = Task(
-      description: 'description',
-      dependencies: [],
-      status: TaskStatus.inbox,
-      due: DateTime.now().add(Duration(days: 2)),
-      assigned: DateTime.now().add(Duration(hours: 2)),
-      duration: Duration(minutes: 50),
-      load: 0,
-      contexts: [],
-      epic: 'epic',
-      sprint: 'sprint',
-      project: 'project',
-      userKey: 'userKey',
-      title: 'Card Title',
-    );
-
     /// https://stackoverflow.com/questions/69410762/flutter-visitchildelements-called-during-build
     return ViewScaffold(
       child: HotboxArea<Task>(

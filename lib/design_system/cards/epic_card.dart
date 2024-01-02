@@ -7,7 +7,7 @@ class LHEpicCard extends LHCard {
     required this.epic,
     super.key,
   }) : super(
-          header: epic.title,
+          header: epic.title.get(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -28,7 +28,7 @@ class LHEpicCard extends LHCard {
                 direction: Axis.horizontal,
                 children: [
                   LHPillButton(
-                    text: epic.project,
+                    text: epic.project.get(),
                     metaColor: const Meta.midnightBlue(),
                     callback: () {},
                   ),
