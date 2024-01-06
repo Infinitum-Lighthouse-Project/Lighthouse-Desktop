@@ -36,8 +36,11 @@ part './containers/horizontal_shelf.dart';
 part './containers/calendar_view.dart';
 
 part './input/form_dialog.dart';
-part './input/text_field.dart';
-part './input/dropdown.dart';
+part './input/component_provider.dart';
+part './input/input_field.dart';
+part './input/text_input.dart';
+part './input/dropdown_input.dart';
+part './input/date_input.dart';
 
 part './support/view_scaffold.dart';
 part './support/inner_shadow.dart';

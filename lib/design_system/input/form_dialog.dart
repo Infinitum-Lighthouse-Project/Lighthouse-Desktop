@@ -13,8 +13,16 @@ class FormDialog<T extends SchemaObject> extends StatefulWidget {
 }
 
 class FormDialogState extends State<FormDialog> {
+  final LHComponentProvider componentProvider = LHComponentProvider(width: 800);
+
   @override
   Widget build(BuildContext context) {
+    final List<Widget> inputFields = [];
+    for (FormProperty fp
+        in widget.schemaObject.properties.whereType<FormProperty>()) {
+      inputFields.add(fp.createComponent(componentProvider));
+      inputFields.add(const SizedBox(height: 20));
+    }
     return Material(
       child: Center(
         child: Container(
@@ -24,7 +32,7 @@ class FormDialogState extends State<FormDialog> {
           child: Center(
             child: SingleChildScrollView(
               child: Column(
-                children: [],
+                children: inputFields,
               ),
             ),
           ),
