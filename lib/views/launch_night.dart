@@ -24,7 +24,9 @@ class LaunchStateNight extends StatelessWidget with DataBinding {
                   iconData: BootstrapIcons.plus_lg,
                   callback: () async {
                     final Task newTask =
-                        Task(userKey: 'userKey', objectTitle: 'Untitled');
+                        Task(userKey: 'userKey', objectTitle: 'Untitled')
+                          ..dependencies.options.addAll(['A', 'B', 'C']);
+
                     await showDialog(
                       context: context,
                       builder: (context) =>

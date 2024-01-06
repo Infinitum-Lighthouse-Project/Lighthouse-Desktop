@@ -12,7 +12,7 @@ class DateInputField extends InputField<void Function(String)> {
   });
 
   @override
-  TextInputFieldController createState() => TextInputFieldController();
+  DateInputFieldController createState() => DateInputFieldController();
 }
 
 class DateInputFieldController extends InputFieldController<DateInputField> {

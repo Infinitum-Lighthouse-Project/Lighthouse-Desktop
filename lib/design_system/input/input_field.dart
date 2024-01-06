@@ -63,12 +63,13 @@ abstract class InputFieldController<T extends InputField> extends State<T> {
     }
 
     return Center(
-      child: SizedBox(
+      child: Container(
         width: widget.width,
-        child: Wrap(
-          direction: Axis.vertical,
-          alignment: WrapAlignment.start,
-          runAlignment: WrapAlignment.start,
+        height: 65,
+        color: Colors.green,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(widget.inputLabel),
             const SizedBox(height: 4),
@@ -83,8 +84,8 @@ abstract class InputFieldController<T extends InputField> extends State<T> {
               ),
               child: Row(
                 children: [
-                  inputWidget(context),
-                  const Spacer(),
+                  Expanded(child: inputWidget(context)),
+                  const SizedBox(width: 12),
                   Container(
                     width: 33,
                     height: 33,

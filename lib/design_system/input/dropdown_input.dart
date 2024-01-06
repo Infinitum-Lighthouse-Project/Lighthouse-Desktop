@@ -23,12 +23,13 @@ class SingleSelectDropdownInputFieldController
     extends InputFieldController<SingleSelectDropdownInputField> {
   String selection = '';
   @override
-  Widget inputWidget(BuildContext context) => DropdownButtonFormField<String>(
+  Widget inputWidget(BuildContext context) => Text(widget.items
+      .join()); /* DropdownButtonFormField<String>(
         items: [
           for (final item in widget.items) DropdownMenuItem(child: Text(item))
         ],
         onChanged: (newValue) => widget.callback?.call(selection),
-      );
+      ); */
 }
 
 class MultiSelectDropdownInputField
@@ -55,10 +56,11 @@ class MultiSelectDropdownInputFieldController
     extends InputFieldController<MultiSelectDropdownInputField> {
   final List<String> selections = [];
   @override
-  Widget inputWidget(BuildContext context) => DropdownButtonFormField<String>(
+  Widget inputWidget(BuildContext context) => Text(widget.items
+      .join()); /* DropdownButtonFormField<String>(
         items: [
           for (final item in widget.items) DropdownMenuItem(child: Text(item))
         ],
         onChanged: (newValue) => widget.callback?.call(selections),
-      );
+      ); */
 }
