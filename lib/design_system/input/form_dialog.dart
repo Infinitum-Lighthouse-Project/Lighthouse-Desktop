@@ -28,7 +28,6 @@ class FormDialogState extends State<FormDialog> {
         child: Container(
           width: 800,
           height: 600,
-          color: Colors.red,
           child: Padding(
             padding: const EdgeInsets.only(left: 8, right: 8),
             child: SingleChildScrollView(

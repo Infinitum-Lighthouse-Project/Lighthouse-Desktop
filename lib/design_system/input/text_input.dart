@@ -23,14 +23,46 @@ class TextInputField extends InputField<void Function(String)> {
   TextInputFieldController createState() => TextInputFieldController();
 }
 
-class TextInputFieldController extends InputFieldController<TextInputField> {
+class TextInputFieldController extends InputFieldController<TextInputField>
+    with InputFieldStyling<TextInputField> {
   @override
-  Widget inputWidget(BuildContext context) => TextField(
+  Widget build(BuildContext context) {
+    return inputField(
+      context,
+      child: TextField(
         focusNode: focusNode,
         controller: controller,
+        textInputAction: TextInputAction.next,
         keyboardType: widget.inputType == InputType.text
             ? TextInputType.text
             : TextInputType.number,
-        onEditingComplete: () => widget.callback?.call(controller.text),
-      );
+        onEditingComplete: () {
+          widget.callback?.call(controller.text);
+          setState(() {
+            moveFocusToNextField();
+          });
+        },
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(
+            left: 4,
+            right: 4,
+            top: -15,
+          ),
+        ),
+        cursorHeight: 18,
+        cursorColor: const Mauve.s300(),
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: Mauve.s300(),
+        ),
+      ),
+      iconButton: fieldIconButton(
+        context,
+        onPressed: () {},
+      ),
+      helpText: widget.descriptor,
+    );
+  }
 }

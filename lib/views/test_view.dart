@@ -1,55 +1,13 @@
 part of lh.desktop.views;
 
 class TestView extends StatelessWidget {
+  final Task newTask = Task(userKey: 'userKey', objectTitle: 'Untitled')
+    ..dependencies.options.addAll(['A', 'B', 'C']);
   @override
   Widget build(BuildContext context) {
     /// https://stackoverflow.com/questions/69410762/flutter-visitchildelements-called-during-build
     return ViewScaffold(
-      child: HotboxArea<Task>(
-        hotbox: (data) => LighthouseHotbox<Task>(
-          hotboxData: HotboxData(
-            indexableContent: data,
-            rightSector: Container(),
-            lowerSector: Container(),
-            leftSector: Container(),
-          ),
-          width: 800,
-          height: 800,
-          style: const HotboxStyle(
-            backgroundColor: Colors.deepPurpleAccent,
-            pieColor: Colors.amber,
-          ),
-        ),
-        child: Center(
-          child: Container(
-            width: 1200,
-            height: 800,
-            child: Row(children: [
-              LHVerticalShelf(
-                header: 'Shelf Title',
-                width: 352,
-                height: 592,
-                panelButtons: [
-                  LHIconButton(iconData: Icons.arrow_downward, callback: () {}),
-                ],
-                data: List<Task>.generate(10, (_) => task),
-                generator: (task) => LHTaskCard(task: task),
-              ),
-              const SizedBox(width: 40),
-              LHHorizontalShelf(
-                header: 'Shelf Title',
-                width: 800,
-                height: 176, // 120 + 8 + 8 + 40
-                panelButtons: [
-                  LHIconButton(iconData: Icons.add, callback: () {}),
-                ],
-                children: List<LHTaskCard>.generate(
-                    10, (_) => LHTaskCard(task: task)),
-              ),
-            ]),
-          ),
-        ),
-      ),
+      child: FormDialog<Task>(schemaObject: newTask),
     );
   }
 }

@@ -20,16 +20,26 @@ class SingleSelectDropdownInputField extends InputField<void Function(String)> {
 }
 
 class SingleSelectDropdownInputFieldController
-    extends InputFieldController<SingleSelectDropdownInputField> {
+    extends InputFieldController<SingleSelectDropdownInputField>
+    with InputFieldStyling<SingleSelectDropdownInputField> {
   String selection = '';
+
   @override
-  Widget inputWidget(BuildContext context) => Text(widget.items
-      .join()); /* DropdownButtonFormField<String>(
+  Widget build(BuildContext context) {
+    return inputField(
+      context,
+      child: Text(widget.items
+          .join()) /* DropdownButtonFormField<String>(
         items: [
           for (final item in widget.items) DropdownMenuItem(child: Text(item))
         ],
         onChanged: (newValue) => widget.callback?.call(selection),
       ); */
+      ,
+      iconButton: fieldIconButton(context),
+      helpText: widget.descriptor,
+    );
+  }
 }
 
 class MultiSelectDropdownInputField
@@ -53,14 +63,24 @@ class MultiSelectDropdownInputField
 }
 
 class MultiSelectDropdownInputFieldController
-    extends InputFieldController<MultiSelectDropdownInputField> {
+    extends InputFieldController<MultiSelectDropdownInputField>
+    with InputFieldStyling<MultiSelectDropdownInputField> {
   final List<String> selections = [];
+
   @override
-  Widget inputWidget(BuildContext context) => Text(widget.items
-      .join()); /* DropdownButtonFormField<String>(
+  Widget build(BuildContext context) {
+    return inputField(
+      context,
+      child: Text(widget.items
+          .join()) /* DropdownButtonFormField<String>(
         items: [
           for (final item in widget.items) DropdownMenuItem(child: Text(item))
         ],
         onChanged: (newValue) => widget.callback?.call(selections),
       ); */
+      ,
+      iconButton: fieldIconButton(context),
+      helpText: widget.descriptor,
+    );
+  }
 }
