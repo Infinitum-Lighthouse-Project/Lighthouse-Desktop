@@ -9,6 +9,8 @@ class LHTextButton extends LHButton {
     required this.text,
     required super.callback,
     this.fixedHeight = 28,
+    super.preserveState,
+    super.pressedByDefault,
     super.width,
     super.key,
   }) : super(

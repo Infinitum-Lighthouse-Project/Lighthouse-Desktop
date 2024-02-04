@@ -10,6 +10,8 @@ class LHIcoTextButton extends LHButton {
     required this.iconData,
     this.fixedHeight = 24,
     required super.callback,
+    super.preserveState,
+    super.pressedByDefault,
     super.width,
     super.key,
   }) : super(

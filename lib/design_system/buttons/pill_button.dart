@@ -10,6 +10,8 @@ class LHPillButton extends LHButton {
     required super.callback,
     required this.metaColor,
     this.fixedHeight = 24,
+    super.preserveState,
+    super.pressedByDefault,
     super.width,
     super.key,
   }) : super(

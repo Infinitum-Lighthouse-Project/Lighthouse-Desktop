@@ -76,7 +76,7 @@ class LHComponentProvider extends ComponentProvider {
       inputLabel: property.label,
       width: width,
       items: property.convertToStorable(property.options),
-      iconData: Icons.keyboard_arrow_down,
+      iconData: Icons.format_list_bulleted,
       required: !property.optional,
       callback: selections,
     );

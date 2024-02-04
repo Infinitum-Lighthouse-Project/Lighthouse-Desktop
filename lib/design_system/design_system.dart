@@ -2,6 +2,7 @@ library lh.desktop.ds;
 
 import 'dart:js_util';
 import 'dart:ui';
+import 'dart:ui_web';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -43,8 +44,12 @@ part './input/text_input.dart';
 part './input/dropdown_input.dart';
 part './input/date_input.dart';
 
+part './menus/single_select_menu.dart';
+part './menus/multi_select_menu.dart';
+
 part './support/view_scaffold.dart';
 part './support/inner_shadow.dart';
+part './support/overlay.dart';
 
 part './utils/utils.dart';
 

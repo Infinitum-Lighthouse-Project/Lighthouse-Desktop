@@ -10,10 +10,12 @@ mixin InputFieldStyling<T extends InputField> on InputFieldController<T> {
   Widget fieldIconButton(
     BuildContext context, {
     void Function()? onPressed,
+    Key? key,
   }) {
     return LHIconButton(
       iconData: widget.iconData,
       callback: onPressed,
+      key: key,
     );
     /* TextButton(
       onPressed: onPressed,

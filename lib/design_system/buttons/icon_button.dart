@@ -6,6 +6,8 @@ class LHIconButton extends LHButton {
   LHIconButton({
     required this.iconData,
     required super.callback,
+    super.pressedByDefault,
+    super.preserveState,
     super.key,
   }) : super(
           width: LHDesignSystem.scaleFactor * 28,

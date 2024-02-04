@@ -7,6 +7,8 @@ class LHButton extends StatefulWidget {
   final Color hoverColor;
   final Color pressedColor;
   final Widget child;
+  final bool preserveState;
+  final bool pressedByDefault;
   final void Function()? callback;
 
   const LHButton({
@@ -17,6 +19,8 @@ class LHButton extends StatefulWidget {
     required this.child,
     required this.pressedColor,
     required this.callback,
+    this.pressedByDefault = false,
+    this.preserveState = false,
     super.key,
   });
 
@@ -25,7 +29,9 @@ class LHButton extends StatefulWidget {
 }
 
 class LHButtonState extends State<LHButton> {
-  late Color currentColor = widget.inactiveColor;
+  late Color currentColor =
+      widget.pressedByDefault ? widget.pressedColor : widget.inactiveColor;
+  late bool pressed = widget.pressedByDefault;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +58,13 @@ class LHButtonState extends State<LHButton> {
             onTapUp: (_) {
               if (widget.callback != null) {
                 setState(() {
-                  currentColor = widget.hoverColor;
+                  if (widget.preserveState) {
+                    pressed = !pressed;
+                    currentColor =
+                        pressed ? widget.pressedColor : widget.hoverColor;
+                  } else {
+                    currentColor = widget.hoverColor;
+                  }
                 });
                 widget.callback?.call();
               }
@@ -71,7 +83,12 @@ class LHButtonState extends State<LHButton> {
               onExit: (_) {
                 if (widget.callback != null) {
                   setState(() {
-                    currentColor = widget.inactiveColor;
+                    if (widget.preserveState) {
+                      currentColor =
+                          pressed ? widget.pressedColor : widget.inactiveColor;
+                    } else {
+                      currentColor = widget.inactiveColor;
+                    }
                   });
                 }
               },
