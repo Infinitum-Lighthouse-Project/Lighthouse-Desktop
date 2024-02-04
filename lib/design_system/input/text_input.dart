@@ -37,9 +37,17 @@ class TextInputFieldController extends InputFieldController<TextInputField>
             ? TextInputType.text
             : TextInputType.number,
         onEditingComplete: () {
-          widget.callback?.call(controller.text);
           setState(() {
-            moveFocusToNextField();
+            performValidationChecks((String value) {
+              final List<String> issues = [];
+              if (widget.inputType == InputType.number &&
+                  double.tryParse(value) == null) {
+                error = true;
+                issues.add('Invalid number');
+              }
+              return issues;
+            });
+            if (!error) moveFocusToNextField();
           });
         },
         decoration: const InputDecoration(
@@ -60,9 +68,8 @@ class TextInputFieldController extends InputFieldController<TextInputField>
       ),
       iconButton: fieldIconButton(
         context,
-        onPressed: () {},
+        onPressed: null,
       ),
-      helpText: widget.descriptor,
     );
   }
 }

@@ -37,7 +37,6 @@ class SingleSelectDropdownInputFieldController
       ); */
       ,
       iconButton: fieldIconButton(context),
-      helpText: widget.descriptor,
     );
   }
 }
@@ -80,7 +79,6 @@ class MultiSelectDropdownInputFieldController
       ); */
       ,
       iconButton: fieldIconButton(context),
-      helpText: widget.descriptor,
     );
   }
 }

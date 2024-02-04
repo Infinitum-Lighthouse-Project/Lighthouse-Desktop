@@ -4,7 +4,6 @@ enum InputFieldState {
   active,
   hover,
   inactive,
-  error,
 }
 
 mixin InputFieldStyling<T extends InputField> on InputFieldController<T> {
@@ -12,7 +11,11 @@ mixin InputFieldStyling<T extends InputField> on InputFieldController<T> {
     BuildContext context, {
     void Function()? onPressed,
   }) {
-    return TextButton(
+    return LHIconButton(
+      iconData: widget.iconData,
+      callback: onPressed,
+    );
+    /* TextButton(
       onPressed: onPressed,
       child: Container(
         width: 33,
@@ -32,20 +35,19 @@ mixin InputFieldStyling<T extends InputField> on InputFieldController<T> {
           ),
         ),
       ),
-    );
+    ); */
   }
 
   Widget inputField(
     BuildContext context, {
     required Widget child,
     required Widget iconButton,
-    required String? helpText,
   }) {
     final Color borderColor;
     if (fieldState == InputFieldState.active) {
       borderColor = const Mauve.s100();
-    } else if (fieldState == InputFieldState.error) {
-      borderColor = Colors.red;
+    } else if (error) {
+      borderColor = const Meta.hotPink();
     } else {
       if (widget.required) {
         borderColor = const Mauve.s500();
@@ -57,12 +59,11 @@ mixin InputFieldStyling<T extends InputField> on InputFieldController<T> {
     return Center(
       child: SizedBox(
         width: widget.width,
-        height:
-            61 /* +
-            (fieldState == InputFieldState.active && widget.descriptor != null
-                ? 11
-                : 0) */
-        ,
+        height: 61 +
+            ((fieldState == InputFieldState.active || error) &&
+                    helpText.isNotEmpty
+                ? (26 * helpText.length) as double
+                : 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,9 +97,17 @@ mixin InputFieldStyling<T extends InputField> on InputFieldController<T> {
                 ],
               ),
             ),
-            if (fieldState == InputFieldState.active) ...[
+            if ((fieldState == InputFieldState.active || error) &&
+                helpText.isNotEmpty) ...[
               const SizedBox(height: 4),
-              if (helpText != null) Text(helpText),
+              Text(
+                helpText.join(''),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Meta.hotPink(),
+                ),
+              ),
             ]
           ],
         ),
@@ -114,12 +123,14 @@ abstract class InputField<C> extends StatefulWidget {
   final bool required;
   final double width;
   final C? callback;
+  final List<String> Function(String)? validationCheck;
 
   const InputField({
     required this.inputLabel,
     required this.width,
     required this.iconData,
     required this.required,
+    this.validationCheck,
     this.descriptor,
     this.callback,
     super.key,
@@ -133,8 +144,33 @@ abstract class InputFieldController<T extends InputField> extends State<T> {
   final FocusNode focusNode = FocusNode();
   final TextEditingController controller = TextEditingController();
   InputFieldState fieldState = InputFieldState.inactive;
+  bool error = false;
+  List<String> helpText = [];
 
   void moveFocusToNextField() => focusNode.nextFocus();
+
+  void performValidationChecks([
+    List<String> Function(String)? additionalChecks,
+  ]) {
+    final String value = controller.text;
+    final List<String> errors = [
+      ...?widget.validationCheck?.call(value),
+      ...?additionalChecks?.call(value)
+    ];
+
+    if (errors.isEmpty) {
+      setState(() {
+        error = false;
+        helpText = [];
+      });
+      widget.callback?.call(controller.text);
+    } else {
+      setState(() {
+        error = true;
+        helpText = errors;
+      });
+    }
+  }
 
   @override
   void initState() {

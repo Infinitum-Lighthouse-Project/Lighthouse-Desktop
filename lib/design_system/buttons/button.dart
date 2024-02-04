@@ -7,7 +7,7 @@ class LHButton extends StatefulWidget {
   final Color hoverColor;
   final Color pressedColor;
   final Widget child;
-  final void Function() callback;
+  final void Function()? callback;
 
   const LHButton({
     required this.width,
@@ -29,47 +29,60 @@ class LHButtonState extends State<LHButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisSize: MainAxisSize.min, children: [
-      AnimatedContainer(
-        width: widget.width,
-        height: widget.height,
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeOutQuad,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(2),
-          color: currentColor,
-        ),
-        child: GestureDetector(
-          onTapDown: (_) {
-            setState(() {
-              currentColor = widget.pressedColor;
-            });
-          },
-          onTapUp: (_) {
-            setState(() {
-              currentColor = widget.hoverColor;
-            });
-            widget.callback();
-          },
-          child: MouseRegion(
-            cursor: SystemMouseCursors.click,
-            onEnter: (_) {
-              setState(() {
-                currentColor = widget.hoverColor;
-              });
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AnimatedContainer(
+          width: widget.width,
+          height: widget.height,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOutQuad,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: currentColor,
+          ),
+          child: GestureDetector(
+            onTapDown: (_) {
+              if (widget.callback != null) {
+                setState(() {
+                  currentColor = widget.pressedColor;
+                });
+              }
             },
-            onExit: (_) {
-              setState(() {
-                currentColor = widget.inactiveColor;
-              });
+            onTapUp: (_) {
+              if (widget.callback != null) {
+                setState(() {
+                  currentColor = widget.hoverColor;
+                });
+                widget.callback?.call();
+              }
             },
-            child: Padding(
-              padding: const EdgeInsets.all(4),
-              child: widget.child,
+            child: MouseRegion(
+              cursor: widget.callback != null
+                  ? SystemMouseCursors.click
+                  : MouseCursor.defer,
+              onEnter: (_) {
+                if (widget.callback != null) {
+                  setState(() {
+                    currentColor = widget.hoverColor;
+                  });
+                }
+              },
+              onExit: (_) {
+                if (widget.callback != null) {
+                  setState(() {
+                    currentColor = widget.inactiveColor;
+                  });
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: widget.child,
+              ),
             ),
           ),
         ),
-      ),
-    ]);
+      ],
+    );
   }
 }

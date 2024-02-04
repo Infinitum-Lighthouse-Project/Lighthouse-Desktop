@@ -25,21 +25,31 @@ class DateInputFieldController extends InputFieldController<DateInputField>
         focusNode: focusNode,
         controller: controller,
         onEditingComplete: () {
-          final DateTime? parsedDt = DateTime.tryParse(controller.text);
-          final String cleanedValue;
-          if (parsedDt == null) {
-            if (controller.text == 'tomorrow' || controller.text == 'tonight') {
-              cleanedValue = controller.text;
-            } else {
-              fieldState = InputFieldState.error;
-              moveFocusToNextField();
-              return;
-            }
-          } else {
-            cleanedValue = parsedDt.toIso8601String();
-          }
-          widget.callback?.call(cleanedValue);
-          moveFocusToNextField();
+          setState(() {
+            performValidationChecks((String value) {
+              final List<String> issues = [];
+              final DateTime? parsedDt = DateTime.tryParse(controller.text);
+              final String cleanedValue;
+              if (parsedDt == null) {
+                if (controller.text == 'tomorrow' ||
+                    controller.text == 'tonight') {
+                  cleanedValue = (controller.text == 'tomorrow'
+                          ? DateTime.now().add(const Duration(days: 1))
+                          : DateTime.now().subtract(const Duration(days: 1)))
+                      .toIso8601String();
+                } else {
+                  error = true;
+                  issues.add('Unrecognised date');
+                  cleanedValue = controller.text;
+                }
+              } else {
+                cleanedValue = parsedDt.toIso8601String();
+              }
+              controller.text = cleanedValue;
+              return issues;
+            });
+            if (!error) moveFocusToNextField();
+          });
         },
         decoration: const InputDecoration(
           border: InputBorder.none,
@@ -61,7 +71,6 @@ class DateInputFieldController extends InputFieldController<DateInputField>
         context,
         onPressed: () {},
       ),
-      helpText: widget.descriptor,
     );
   }
 }

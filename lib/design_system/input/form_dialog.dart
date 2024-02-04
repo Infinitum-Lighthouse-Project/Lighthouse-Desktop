@@ -26,7 +26,7 @@ class FormDialogState extends State<FormDialog> {
     return Material(
       child: Center(
         child: Container(
-          width: 800,
+          width: 400,
           height: 600,
           child: Padding(
             padding: const EdgeInsets.only(left: 8, right: 8),
