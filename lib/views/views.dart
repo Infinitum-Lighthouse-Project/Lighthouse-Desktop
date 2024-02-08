@@ -1,5 +1,7 @@
 library lh.desktop.views;
 
+import 'dart:html';
+
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:hotbox/hotbox.dart';

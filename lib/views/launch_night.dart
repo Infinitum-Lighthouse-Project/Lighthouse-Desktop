@@ -13,7 +13,7 @@ class LaunchStateNight extends StatelessWidget with DataBinding {
         children: [
           dataBoundBuilder(
             future: inboxShelfData,
-            builder: (_, tasks) => LHVerticalShelf(
+            builder: (dbbContext, tasks) => LHVerticalShelf(
               header: 'Inbox',
               width: 352,
               height: 768,
@@ -26,21 +26,20 @@ class LaunchStateNight extends StatelessWidget with DataBinding {
                     final Task newTask =
                         Task(userKey: 'userKey', objectTitle: 'Untitled')
                           ..dependencies.options.addAll(['A', 'B', 'C']);
-
+                    BuildContext dlgContext;
                     await showDialog(
-                      context: context,
-                      builder: (context) =>
-                          FormDialog<Task>(schemaObject: newTask),
+                      context: dbbContext,
+                      builder: (ctx) {
+                        dlgContext = ctx;
+                        return FormDialog<Task>(
+                          schemaObject: newTask,
+                          resultHandler: (SchemaObject o) async {
+                            final taskDoc = await DB.tasksColl.add(o as Task);
+                            Navigator.pop(dlgContext);
+                          },
+                        );
+                      },
                     );
-                    /* DB.tasksColl.add(
-                      Task(userKey: 'userKey', objectTitle: 'Vamos')
-                        ..description.set("Some description")
-                        ..due.set(DateTime.now().add(const Duration(days: 3)))
-                        ..assigned
-                            .set(DateTime.now().add(const Duration(days: 3)))
-                        ..load.set(0.2)
-                        ..duration.set(const Duration(seconds: 2)),
-                    ); */
                   },
                 ),
                 LHIconButton(

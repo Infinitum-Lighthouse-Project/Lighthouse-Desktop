@@ -5,9 +5,13 @@ class TestView extends StatelessWidget {
     ..dependencies.options.addAll(['A', 'B', 'C']);
   @override
   Widget build(BuildContext context) {
-    /// https://stackoverflow.com/questions/69410762/flutter-visitchildelements-called-during-build
     return ViewScaffold(
-      child: FormDialog<Task>(schemaObject: newTask),
+      child: FormDialog<Task>(
+        schemaObject: newTask,
+        resultHandler: (SchemaObject o) {
+          DB.tasksColl.add(o as Task);
+        },
+      ),
     );
   }
 }

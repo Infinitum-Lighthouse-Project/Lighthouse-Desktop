@@ -2,9 +2,11 @@ part of lh.desktop.ds;
 
 class FormDialog<T extends SchemaObject> extends StatefulWidget {
   final T schemaObject;
+  final void Function(T) resultHandler;
 
   const FormDialog({
     required this.schemaObject,
+    required this.resultHandler,
     super.key,
   });
 
@@ -12,17 +14,21 @@ class FormDialog<T extends SchemaObject> extends StatefulWidget {
   State<StatefulWidget> createState() => FormDialogState();
 }
 
-class FormDialogState extends State<FormDialog> {
+class FormDialogState<T extends SchemaObject> extends State<FormDialog<T>> {
+  late final T schemaObject = widget.schemaObject;
   final LHComponentProvider componentProvider = LHComponentProvider(width: 800);
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> inputFields = [];
-    for (FormProperty fp
-        in widget.schemaObject.properties.whereType<FormProperty>()) {
+    for (FormProperty fp in schemaObject.properties.whereType<FormProperty>()) {
       inputFields.add(fp.createComponent(componentProvider));
       inputFields.add(const SizedBox(height: 20));
     }
+    inputFields.add(LHTextButton(
+      text: 'Done',
+      callback: () => widget.resultHandler(schemaObject),
+    ));
     return Material(
       child: Center(
         child: Container(

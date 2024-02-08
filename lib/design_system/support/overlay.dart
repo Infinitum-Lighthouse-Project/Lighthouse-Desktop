@@ -24,7 +24,7 @@ mixin Overlays {
   }
 
   void removeOverlay() {
-    Navigator.of(menuContext!).pop();
+    if (menuContext != null) Navigator.of(menuContext!).pop();
     overlay = null;
   }
 
