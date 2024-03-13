@@ -1,16 +1,17 @@
 part of lh.desktop.ds;
 
-class LHCard extends StatelessWidget {
+abstract class LHCard extends StatelessWidget {
   final String header;
-  final Widget child;
   static const _width = LHDesignSystem.scaleFactor * 336;
   static const _height = LHDesignSystem.scaleFactor * 120;
 
   const LHCard({
     required this.header,
-    required this.child,
     super.key,
   });
+
+  Widget builder(BuildContext context);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,10 +31,21 @@ class LHCard extends StatelessWidget {
               header,
               style: LHType.cardHeader_1,
             ),
-            Expanded(child: child),
+            Expanded(child: builder(context)),
           ],
         ),
       ),
     );
   }
+}
+
+abstract class LHDataCard<T extends SchemaObject> extends LHCard {
+  final DocumentSnapshot<T> doc;
+  final T object;
+
+  LHDataCard({
+    required this.doc,
+    required super.header,
+    super.key,
+  }) : object = doc.data()!;
 }
