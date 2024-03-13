@@ -20,16 +20,18 @@ class LHTaskCard extends LHDataCard<Task> {
             runSpacing: 2,
             direction: Axis.horizontal,
             children: [
-              LHIcoTextButton(
-                text: task.assigned.get()!.formatAsRelative(),
-                iconData: Icons.schedule,
-                callback: () {},
-              ),
-              LHIcoTextButton(
-                text: task.due.get()!.formatAsRelative(),
-                iconData: Icons.alarm,
-                callback: () {},
-              ),
+              if (task.assigned.get() != null)
+                LHIcoTextButton(
+                  text: task.assigned.get()!.formatAsRelative(),
+                  iconData: Icons.schedule,
+                  callback: () {},
+                ),
+              if (task.due.get() != null)
+                LHIcoTextButton(
+                  text: task.due.get()!.formatAsRelative(),
+                  iconData: Icons.alarm,
+                  callback: () {},
+                ),
               if (task.duration.get() != null)
                 LHIcoTextButton(
                   text: task.duration.get()!.inMinutes.toString(),

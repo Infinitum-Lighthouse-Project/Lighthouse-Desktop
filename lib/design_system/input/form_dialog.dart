@@ -2,7 +2,7 @@ part of lh.desktop.ds;
 
 class FormDialog<T extends SchemaObject> extends StatefulWidget {
   final T schemaObject;
-  final void Function(T) resultHandler;
+  final void Function() resultHandler;
 
   const FormDialog({
     required this.schemaObject,
@@ -27,7 +27,7 @@ class FormDialogState<T extends SchemaObject> extends State<FormDialog<T>> {
     }
     inputFields.add(LHTextButton(
       text: 'Done',
-      callback: () => widget.resultHandler(schemaObject),
+      callback: () => widget.resultHandler(),
     ));
     return Material(
       child: Center(

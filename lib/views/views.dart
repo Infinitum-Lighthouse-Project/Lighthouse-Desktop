@@ -1,7 +1,6 @@
 library lh.desktop.views;
 
-import 'dart:html';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:hotbox/hotbox.dart';
@@ -19,15 +18,18 @@ part './sprint_planner_1.dart';
 part './sprint_planner_2.dart';
 part './project_viewer.dart';
 
-final Sprint sprint = Sprint(userKey: 'userKey', objectTitle: 'Sprint Title')
+final Sprint sprint = Sprint(userKey: 'userKey')
+  ..title.set('Sprint Title')
   ..start.set(DateTime.now().subtract(const Duration(days: 4)))
   ..end.set(DateTime.now().add(const Duration(days: 2)));
 
-final Epic epic = Epic(userKey: 'userKey', objectTitle: 'Epic Title')
+final Epic epic = Epic(userKey: 'userKey')
+  ..title.set('Epic Title')
   ..tasks.set([task.objectId].getValues())
   ..project.set('project');
 
-final Task task = Task(userKey: 'userKey', objectTitle: 'Task Title')
+final Task task = Task(userKey: 'userKey')
+  ..title.set('Task Title')
   ..description.set("Description")
   ..due.set(DateTime.now().add(const Duration(days: 2)))
   ..assigned.set(DateTime.now().add(const Duration(days: 1)))

@@ -19,15 +19,11 @@ class LHVerticalShelf<T> extends LHContainer with HotboxIndexable<T> {
             padding: const EdgeInsets.only(left: 8, right: 8),
             child: data.isNotEmpty
                 ? ListView.separated(
+                    padding: const EdgeInsets.only(top: 8),
                     scrollDirection: Axis.vertical,
                     itemCount: data.length,
                     separatorBuilder: (_, __) => SizedBox(height: itemSpacing),
-                    itemBuilder: (_, int i) =>
-                        // The SizedBox adds an extra element at each end of the list,
-                        // so a separator of height 8 is added, creating padding
-                        i == 0 || i == data.length - 1
-                            ? const SizedBox()
-                            : generator(data[i]),
+                    itemBuilder: (_, int i) => generator(data[i]),
                   )
                 : const Text('No data'),
           ),

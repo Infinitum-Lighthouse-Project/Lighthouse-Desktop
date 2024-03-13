@@ -17,7 +17,7 @@ class LHComponentProvider extends ComponentProvider {
       width: width,
       inputType: InputType.text,
       iconData: Icons.text_fields,
-      required: !property.optional,
+      required: property.strictlyRequired,
       callback: editingCompleteCallback,
     );
   }
@@ -32,7 +32,7 @@ class LHComponentProvider extends ComponentProvider {
       width: width,
       inputType: InputType.number,
       iconData: Icons.numbers,
-      required: !property.optional,
+      required: property.strictlyRequired,
       callback: editingCompleteCallback,
     );
   }
@@ -46,7 +46,7 @@ class LHComponentProvider extends ComponentProvider {
       inputLabel: property.label,
       width: width,
       iconData: Icons.today,
-      required: !property.optional,
+      required: property.strictlyRequired,
       callback: dtString,
     );
   }
@@ -62,7 +62,7 @@ class LHComponentProvider extends ComponentProvider {
           .listOf<String>((item) => property.convertToStorable(item)),
       width: width,
       iconData: Icons.keyboard_arrow_down,
-      required: !property.optional,
+      required: property.strictlyRequired,
       callback: selection,
     );
   }
@@ -77,7 +77,7 @@ class LHComponentProvider extends ComponentProvider {
       width: width,
       items: property.convertToStorable(property.options),
       iconData: Icons.format_list_bulleted,
-      required: !property.optional,
+      required: property.strictlyRequired,
       callback: selections,
     );
   }

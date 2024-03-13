@@ -1,15 +1,15 @@
 part of lh.desktop.views;
 
 class TestView extends StatelessWidget {
-  final Task newTask = Task(userKey: 'userKey', objectTitle: 'Untitled')
+  final Task newTask = Task(userKey: 'userKey')
     ..dependencies.options.addAll(['A', 'B', 'C']);
   @override
   Widget build(BuildContext context) {
     return ViewScaffold(
       child: FormDialog<Task>(
         schemaObject: newTask,
-        resultHandler: (SchemaObject o) {
-          DB.tasksColl.add(o as Task);
+        resultHandler: () {
+          DB.tasksColl.add(newTask);
         },
       ),
     );

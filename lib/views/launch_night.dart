@@ -1,7 +1,7 @@
 part of lh.desktop.views;
 
 class LaunchStateNight extends StatefulWidget {
-  final List<QueryDocumentSnapshot<Task>>? inboxShelfData;
+  final List<DocumentSnapshot<Task>>? inboxShelfData;
 
   const LaunchStateNight({
     this.inboxShelfData,
@@ -13,13 +13,15 @@ class LaunchStateNight extends StatefulWidget {
 
 class LaunchStateNightState extends State<LaunchStateNight>
     with ViewDataBinding {
-  late final List<QueryDocumentSnapshot<Task>> inboxShelfData;
+  late final List<DocumentSnapshot<Task>> inboxShelfData;
 
   @override
   void initState() {
     addField((x) => inboxShelfData = x, widget.inboxShelfData, () async {
-      final res =
-          (await DB.tasksColl.where('status', isEqualTo: 'inbox').get()).docs;
+      final res = (await DB.tasksColl.where('status', isEqualTo: 'inbox').get())
+          .docs
+          .map<DocumentSnapshot<Task>>((e) => e as DocumentSnapshot<Task>)
+          .toList();
       return res;
     });
     super.initState();
@@ -44,22 +46,23 @@ class LaunchStateNightState extends State<LaunchStateNight>
                   callback: () async {
                     final Task newTask = Task(userKey: 'userKey')
                       ..dependencies.options.addAll(['A', 'B', 'C']);
-                    BuildContext dlgContext;
                     await showDialog(
                       context: ctx,
-                      builder: (ctx) {
-                        dlgContext = ctx;
+                      builder: (c) {
                         return FormDialog<Task>(
                           schemaObject: newTask,
-                          resultHandler: (SchemaObject o) async {
-                            final taskDoc = await DB.tasksColl.add(o as Task);
+                          resultHandler: () async {
+                            final DocumentSnapshot<Task> taskDoc =
+                                await (await DB.tasksColl.add(newTask)).get();
+                            inboxShelfData.add(taskDoc);
                             if (mounted) {
-                              Navigator.pop(dlgContext);
+                              Navigator.pop(c);
                             }
                           },
                         );
                       },
                     );
+                    setState(() {});
                   },
                 ),
                 LHIconButton(

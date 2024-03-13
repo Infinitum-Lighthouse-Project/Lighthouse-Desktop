@@ -1,7 +1,11 @@
 part of lh.desktop.views;
 
 class SprintPlanner2 extends StatelessWidget {
-  const SprintPlanner2({super.key});
+  final List<DocumentSnapshot<Task>> tasks;
+  const SprintPlanner2({
+    required this.tasks,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +17,8 @@ class SprintPlanner2 extends StatelessWidget {
             header: 'Sprint S4',
             width: 352,
             height: 768,
-            data: List<Task>.generate(10, (_) => task),
-            generator: (task) => LHTaskCard(task: task),
+            data: tasks,
+            generator: (doc) => LHTaskCard(doc: doc),
           ),
           const SizedBox(width: 32),
           LHCalendarView(
