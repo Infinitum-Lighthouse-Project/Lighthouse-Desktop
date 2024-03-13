@@ -19,6 +19,7 @@ class LighthouseApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/launch/night',
       theme: ThemeData(
         fontFamily: 'Cairo',
@@ -27,14 +28,14 @@ class LighthouseApp extends StatelessWidget {
         splashColor: Colors.red,
       ),
       routes: {
-        '/launch/night': (_) => LaunchStateNight(),
+        '/launch/night': (_) => const LaunchStateNight(),
         '/launch/sprintready': (_) => const SprintEndReady(),
         '/launch/sprintunready': (_) => const SprintEndUnready(),
         '/launch/generic': (_) => const AllDayGeneric(),
         '/launch/triage': (_) => const AllDayTriage(),
         '/tools/sprintplanner/1': (_) => const SprintPlanner1(),
-        '/tools/sprintplanner/2': (_) => const SprintPlanner2(),
-        '/tools/projectviewer': (_) => const ProjectViewer(),
+        '/tools/sprintplanner/2': (_) => const SprintPlanner2(tasks: []),
+        '/tools/projectviewer': (_) => const ProjectViewer(epicDocs: []),
         '/test': (_) => TestView(),
       },
     );
