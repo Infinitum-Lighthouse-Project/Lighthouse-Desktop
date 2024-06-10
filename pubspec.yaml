@@ -33,16 +33,12 @@ dependencies:
   
   lighthouse_core:
     path: ../Lighthouse Core/lighthouse_core
-    #git:
-    #  url: https://github.com/Infinitum-Labs/Lighthouse-Core.git
-    #  ref: 1e04c98
   
   hotbox:
     path: ../Hotbox
-    #git:
-    #  url: https://github.com/ObsidianXVI/Flutter-Hotbox.git
-    #  ref: aafdef3
 
+  affogato_editor:
+      path: ../AffogatoEditor
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -91,3 +87,20 @@ flutter:
           weight: 700
         - asset: assets/fonts/cairo/Cairo-Black.ttf
           weight: 800
+    - family: IBMPlexMono
+      fonts:
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-Thin.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-ThinItalic.ttf
+          style: italic
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-Light.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-LightItalic.ttf
+          style: italic
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-Italic.ttf
+          style: italic
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-MediumItalic.ttf
+          style: italic
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.ttf
+          style: italic

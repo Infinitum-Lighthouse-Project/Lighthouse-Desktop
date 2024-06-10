@@ -2,6 +2,7 @@ library lh.desktop;
 
 import 'package:flutter/material.dart';
 import 'package:lighthouse_core/db/db.dart';
+import 'package:lighthouse_core/engines/engines.dart';
 import 'package:lighthouse_desktop/design_system/design_system.dart';
 import 'package:lighthouse_desktop/views/views.dart';
 
@@ -36,6 +37,7 @@ class LighthouseApp extends StatelessWidget {
         '/tools/sprintplanner/1': (_) => const SprintPlanner1(),
         '/tools/sprintplanner/2': (_) => const SprintPlanner2(tasks: []),
         '/tools/projectviewer': (_) => const ProjectViewer(epicDocs: []),
+        '/console': (_) => const HelmscriptConsoleView(),
         '/test': (_) => TestView(),
       },
     );
