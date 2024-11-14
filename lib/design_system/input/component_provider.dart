@@ -58,8 +58,7 @@ class LHComponentProvider extends ComponentProvider {
   ) {
     return SingleSelectDropdownInputField(
       inputLabel: property.label,
-      items: property.options
-          .listOf<String>((item) => property.convertToStorable(item)),
+      items: property.options.isStorable(true).cast<String>(),
       width: width,
       iconData: Icons.keyboard_arrow_down,
       required: property.strictlyRequired,
@@ -75,7 +74,7 @@ class LHComponentProvider extends ComponentProvider {
     return MultiSelectDropdownInputField(
       inputLabel: property.label,
       width: width,
-      items: property.convertToStorable(property.options),
+      items: property.options.isStorable(true),
       iconData: Icons.format_list_bulleted,
       required: property.strictlyRequired,
       callback: selections,

@@ -35,33 +35,36 @@ class SprintPlanner1State extends State<SprintPlanner1> with ViewDataBinding {
   @override
   Widget build(BuildContext context) {
     return ViewScaffold(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        LHVerticalShelf(
-          header: 'Triaged',
-          width: 352,
-          height: 768,
-          data: triagedSprints,
-          generator: (doc) => LHSprintCard(doc: doc),
+      child: multiBoundBuilder(
+        builder: (ctx) => Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            LHVerticalShelf(
+              header: 'Triaged',
+              width: 352,
+              height: 768,
+              data: triagedSprints,
+              generator: (doc) => LHSprintCard(doc: doc),
+            ),
+            const SizedBox(width: 32),
+            LHVerticalShelf(
+              header: 'Sprint S3',
+              width: 352,
+              height: 768,
+              data: s3Sprints,
+              generator: (doc) => LHSprintCard(doc: doc),
+            ),
+            const SizedBox(width: 32),
+            LHVerticalShelf(
+              header: 'Sprint S4',
+              width: 352,
+              height: 768,
+              data: s4Sprints,
+              generator: (doc) => LHSprintCard(doc: doc),
+            ),
+          ],
         ),
-        const SizedBox(width: 32),
-        LHVerticalShelf(
-          header: 'Sprint S3',
-          width: 352,
-          height: 768,
-          data: s3Sprints,
-          generator: (doc) => LHSprintCard(doc: doc),
-        ),
-        const SizedBox(width: 32),
-        LHVerticalShelf(
-          header: 'Sprint S4',
-          width: 352,
-          height: 768,
-          data: s4Sprints,
-          generator: (doc) => LHSprintCard(doc: doc),
-        ),
-      ],
-    ));
+      ),
+    );
   }
 }

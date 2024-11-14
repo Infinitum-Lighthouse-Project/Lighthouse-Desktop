@@ -1,10 +1,12 @@
 library lh.desktop.views;
 
+import 'package:affogato_editor/affogato_editor.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:hotbox/hotbox.dart';
 import 'package:lighthouse_core/db/db.dart';
+import 'package:lighthouse_core/engines/engines.dart';
 import 'package:lighthouse_core/utils/utils.dart';
 import 'package:lighthouse_desktop/design_system/design_system.dart';
 
@@ -17,6 +19,7 @@ part './all_day_triage.dart';
 part './sprint_planner_1.dart';
 part './sprint_planner_2.dart';
 part './project_viewer.dart';
+part './helmscript_console.dart';
 
 final Sprint sprint = Sprint(userKey: 'userKey')
   ..title.set('Sprint Title')

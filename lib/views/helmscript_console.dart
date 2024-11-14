@@ -5,22 +5,18 @@ class HelmscriptConsoleView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewScaffold(
-      child: Center(
-        child: Container(
+    return Center(
+      child: Container(
+        width: 800,
+        height: 800,
+        color: Colors.black,
+        child: AffogatoEditor(
           width: 800,
           height: 800,
-          color: Colors.black,
-          child: AffogatoEditorInstance(
-            languageBundle: helmscriptLB,
-            themeBundle: helmscriptTB,
-            editorConfigs: const AffogatoEditorConfigs(
-              editorWidth: 800,
-              editorHeight: 800,
-              defaultTextStyle: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                color: Colors.red,
-              ),
+          editorConfigs: const AffogatoEditorConfigs(
+            defaultTextStyle: TextStyle(
+              fontFamily: 'IBMPlexMono',
+              color: Colors.red,
             ),
           ),
         ),

@@ -16,7 +16,7 @@ class SprintEndUnready extends StatefulWidget {
 
 class SprintEndUnreadyState extends State<SprintEndUnready>
     with ViewDataBinding {
-  late DocumentSnapshot<Sprint> dailySprint;
+  DocumentSnapshot<Sprint>? dailySprint;
   late List<QueryDocumentSnapshot<Task>> tasks;
 
   @override
@@ -74,7 +74,14 @@ class SprintEndUnreadyState extends State<SprintEndUnready>
                   header: 'Daily Report',
                   width: 848,
                   height: 160,
-                  children: [LHSprintCard(doc: dailySprint)],
+                  children: [
+                    dailySprint != null
+                        ? LHSprintCard(doc: dailySprint!)
+                        : const Text(
+                            'No sprint underway!',
+                            style: TextStyle(color: Colors.white),
+                          )
+                  ],
                 ),
                 const SizedBox(height: 32),
                 LHCalendarView(

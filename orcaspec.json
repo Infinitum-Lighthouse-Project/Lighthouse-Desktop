@@ -1,0 +1,14 @@
+{
+    "engine": "*",
+    "services": [
+        {
+            "name": "firebase",
+            "version": "*",
+            "databaseRootDir": "../lighthouse_core",
+            "startOptions": [
+                "--import=./data",
+                "--export-on-exit"
+            ]
+        }
+    ]
+}

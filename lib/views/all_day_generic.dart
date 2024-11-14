@@ -16,8 +16,8 @@ class AllDayGenericState extends State<AllDayGeneric> with ViewDataBinding {
 
   @override
   void initState() {
-    addField(
-        (x) => tasks = x, tasks, () async => <QueryDocumentSnapshot<Task>>[]);
+    addField((x) => tasks = x, widget.tasks,
+        () async => <QueryDocumentSnapshot<Task>>[]);
     super.initState();
   }
 

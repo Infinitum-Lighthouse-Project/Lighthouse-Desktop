@@ -13,14 +13,13 @@ class LaunchStateNight extends StatefulWidget {
 
 class LaunchStateNightState extends State<LaunchStateNight>
     with ViewDataBinding {
-  late final List<DocumentSnapshot<Task>> inboxShelfData;
+  final List<DocumentSnapshot<Task>> inboxShelfData = [];
 
   @override
   void initState() {
-    addField((x) => inboxShelfData = x, widget.inboxShelfData, () async {
+    addField((x) => inboxShelfData.addAll(x), widget.inboxShelfData, () async {
       final res = (await DB.tasksColl.where('status', isEqualTo: 'inbox').get())
           .docs
-          .map<DocumentSnapshot<Task>>((e) => e as DocumentSnapshot<Task>)
           .toList();
       return res;
     });
@@ -54,7 +53,7 @@ class LaunchStateNightState extends State<LaunchStateNight>
                           resultHandler: () async {
                             final DocumentSnapshot<Task> taskDoc =
                                 await (await DB.tasksColl.add(newTask)).get();
-                            inboxShelfData.add(taskDoc);
+                            inboxShelfData.insert(0, taskDoc);
                             if (mounted) {
                               Navigator.pop(c);
                             }

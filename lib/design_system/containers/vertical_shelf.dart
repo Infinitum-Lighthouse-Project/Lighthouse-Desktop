@@ -25,7 +25,10 @@ class LHVerticalShelf<T> extends LHContainer with HotboxIndexable<T> {
                     separatorBuilder: (_, __) => SizedBox(height: itemSpacing),
                     itemBuilder: (_, int i) => generator(data[i]),
                   )
-                : const Text('No data'),
+                : const Text(
+                    'No data',
+                    style: TextStyle(color: Colors.white),
+                  ),
           ),
         );
 

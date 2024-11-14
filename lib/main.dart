@@ -2,7 +2,6 @@ library lh.desktop;
 
 import 'package:flutter/material.dart';
 import 'package:lighthouse_core/db/db.dart';
-import 'package:lighthouse_core/engines/engines.dart';
 import 'package:lighthouse_desktop/design_system/design_system.dart';
 import 'package:lighthouse_desktop/views/views.dart';
 
